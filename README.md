@@ -1,73 +1,43 @@
-# template_repo
-
-## Template Instructions
-
-Use this template by clicking the green `Use this template` button above to create a new repository.
-
-Couple of things to keep in mind:
-- Make sure to set the owner to the `DataPoint-Armenia` org when creating.
-- Name your repo in the format `<project_name>_<repo_name>`
-  - For example: **vortan_spellchecker**.
-  - This helps keep things organized when you have many repos for one project.
-- This template is just a guideline. Feel free to change things up to suit your own needs.
-  - I would start by deleting this "Template Instructions" section and filling in the other sections as the project develops.
+# vortan_spellcheck
 
 ## About
 
-_Description of your project._
+Spellcheck
 
 ## Documentation
 
-_A list of links to external documentation for your project_
 
-- **Project Spec**: [link](google.com)
-- **Technical Spec**: [link](google.com)
-- **Google Drive Folder**: [link](google.com)
-- **Slack Channel**: #template
+- **Technical Spec**: [link](https://docs.google.com/document/d/174XceYg-MSX32kfEz-C4bQx8zk43uHebvGSBaEduQWM/edit)
+- **Google Drive Folder**: [link](https://drive.google.com/drive/folders/1f1feyB_po6hS7TFvdvPWZ3Q6dSEDjklQ)
+- **Slack Channel**: [#vortan](https://datapointarmenia.slack.com/archives/C01LE2ADLFJ)
 
-## Getting Started
+### Prereqs
 
-This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running follow these simple example steps.
-
-### How to Guide
-
-This is an example of how to list things you need to use the software and how to install them.
-
-
-- [npm](https://www.npmjs.com/)
-
-```
-npm install npm@latest -g
-```
+- [python](https://www.python.org/downloads/)
+- [pip](https://pypi.org/project/pip/)
 
 ### Installation
 
-1. Get a free API Key at https://example.com
-2. Clone the repo
+1. Clone the repo
 ```
-git clone https://github.com/your_username_/Project-Name.git
+git clone git@github.com:DataPoint-Armenia/vortan_spellcheck.git
 ```
-3. Install NPM packages
+2. Install requirements
 ```
-npm install
-```
-4. Enter your API in config.js
-```
-const API_KEY = 'ENTER YOUR API';
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+```
+python ./src/spellcheck.py
+անուշ, 1, 1
+ապուշ, 1, 1
+```
 
 ## Contributors
 
-- @poghos
-- @petros
-- @bardoghimyos
+- [@sourenp](https://github.com/sourenp)
 
-## Achnowledgements
+## Acknowledgements
 
-List all the resources you used such as papers, other repos, tutorials, etc
-
-- [othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template)
