@@ -28,17 +28,27 @@ pip3 install -r requirements.txt
 
 ## Usage
 
-Create frequency dictionary from file of words:
+Dictionary creation
 ```
 python3 src/create_dict.py data/words.txt > data/freq.txt
 ```
 
-Get spellcheck suggestions for word:
+Spellcheck demo
 ```
-python3 src/spellcheck.py data/freq.txt ացուշ
-անուշ, 1, 469
-ապուշ, 1, 54
-ացում, 1, 1
+python3 src/demo.py data/freq.txt
+Initializing spellchecker...
+Բարեւ
+> ացուշ
+անուշ, 1, 18000117
+ապուշ, 1, 12305390
+արուշ, 1, 23894
+ացում, 1, 15929
+```
+
+API
+```
+python3 api/app.py data/test.txt
+// Open your browser and go to http://127.0.0.1:5000/suggest/ացուշ
 ```
 
 ## Contributors

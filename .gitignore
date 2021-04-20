@@ -1,0 +1,10 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# test files
+data/test.txt
+
+# vim
+*.swp
+*.swo
