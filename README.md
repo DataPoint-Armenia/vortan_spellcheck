@@ -47,7 +47,7 @@ Initializing spellchecker...
 
 API
 ```
-python3 api/app.py data/test.txt
+python3 api/app.py data/freq.txt
 // Open your browser and go to http://127.0.0.1:5000/suggest/ացուշ
 ```
 
