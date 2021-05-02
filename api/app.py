@@ -10,13 +10,15 @@ from werkzeug.exceptions import InternalServerError
 
 app = Flask(__name__)
 app.config['PROPAGATE_EXCEPTIONS'] = True
+app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def hello_world():
     return 'Բարեւ!'
 
-@app.route('/suggest/<string:word>', methods=['GET'])
-def suggest(word):
+@app.route('/suggest', methods=['POST'])
+def suggest():
+    word = request.get_json()["word"]
     # query params
     params = _parse_args(request)
 
