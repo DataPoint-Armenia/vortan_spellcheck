@@ -6,6 +6,8 @@ from symspellpy import SymSpell, Verbosity
 from itertools import islice
 import sys
 
+DEFAULT_MAX_EDIT_DISTANCE = 2
+
 class spellchecker:
     def __init__(
         self,
@@ -28,12 +30,19 @@ class spellchecker:
     def suggest(
         self,
         word,
+        max_edit_dist = None,
+        include_unknown=True,
         verbosity = Verbosity.CLOSEST,
-        max_edit_distance = 2,
     ):
+        # defaults
+        if max_edit_dist == None:
+            max_edit_dist = DEFAULT_MAX_EDIT_DISTANCE
+
+        # spellcheck
         suggestions = self.sym_spell.lookup(
             word,
             verbosity,
-            max_edit_distance=max_edit_distance
+            max_edit_distance=max_edit_dist,
+            include_unknown=include_unknown,
         )
         return suggestions
