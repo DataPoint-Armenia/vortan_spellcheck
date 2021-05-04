@@ -46,10 +46,12 @@ def handle_exception(e):
     return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
+    print("Loading spellchecker...")
     sp = spellchecker(
        corpus_path = sys.argv[1],
         max_dictionary_edit_distance = 2,
         prefix_length = 7,
     )
+    print("Done.")
 
     app.run(debug=True)

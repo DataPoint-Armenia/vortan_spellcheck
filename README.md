@@ -6,7 +6,6 @@ Spellcheck
 
 ## Documentation
 
-- **Technical Spec**: [link](https://docs.google.com/document/d/174XceYg-MSX32kfEz-C4bQx8zk43uHebvGSBaEduQWM/edit)
 - **Google Drive Folder**: [link](https://drive.google.com/drive/folders/1f1feyB_po6hS7TFvdvPWZ3Q6dSEDjklQ)
 - **Slack Channel**: [#vortan](https://datapointarmenia.slack.com/archives/C01LE2ADLFJ)
 
@@ -61,7 +60,7 @@ curl -X POST -H "Content-Type: application/json;" -s http://127.0.0.1:5000/sugge
 
 ## Contributors
 
-- [@sourenp](https://github.com/sourenp)
+- [@sourencho](https://github.com/sourencho)
 
 ## Acknowledgements
 
