@@ -12,18 +12,24 @@ from spellcheck import spellchecker
 print("Initializing spellchecker...")
 
 sp = spellchecker(
-   corpus_path = sys.argv[1],
     max_dictionary_edit_distance = 2,
     prefix_length = 7,
+    unigram_freq_file = sys.argv[1],
+    bigram_freq_file = sys.argv[2] if len(sys.argv) == 3 else None,
 )
 
 print("Բարեւ")
 
 while True:
     try:
-        word = input('> ')
-        for suggestion in sp.suggest(word):
-            print(suggestion)
+        phrase = input('> ')
+        if len(phrase.split(' ')) <= 1:
+            suggestions = sp.suggest(phrase)
+        else:
+            suggestions = sp.suggest_compound(phrase)
+    
+        for s in suggestions:
+            print(s)
     except KeyboardInterrupt:
         try:
             sys.exit(0)

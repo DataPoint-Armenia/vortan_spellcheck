@@ -33,15 +33,20 @@ python3 src/create_dict.py data/words.txt > data/freq.txt
 ```
 
 Spellcheck demo
-```
-python3 src/demo.py data/freq.txt
+```bash
+# unigram
+➜ python3 demo/demo.py data/test_unigram_freq.txt
 Initializing spellchecker...
 Բարեւ
-> ացուշ
-անուշ, 1, 18000117
-ապուշ, 1, 12305390
-արուշ, 1, 23894
-ացում, 1, 15929
+> տպրոց
+դպրոց, 1, 1
+
+# bigram
+➜ python3 demo/demo.py data/test_unigram_freq.txt data/test_bigram_freq.txt
+Initializing spellchecker...
+Բարեւ
+> Քնացի տպրոց ՝ ուղագրություն սուորելու:
+քնացի դպրոց ուղղագրություն սովորելու, 7, 0
 ```
 
 API
