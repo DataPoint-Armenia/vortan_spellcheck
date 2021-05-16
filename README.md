@@ -34,18 +34,18 @@ python3 src/create_dict.py data/words.txt > data/freq.txt
 Spellcheck demo
 ```bash
 # unigram
-➜ python3 demo/demo.py data/test_unigram_freq.txt
+➜ python3 demo/demo.py data/uni_freq.txt
 Initializing spellchecker...
 Բարեւ
 > տպրոց
 դպրոց, 1, 1
 
 # bigram
-➜ python3 demo/demo.py data/test_unigram_freq.txt data/test_bigram_freq.txt
+➜ python3 demo/demo.py data/uni_freq.txt data/bi_freq.tx
 Initializing spellchecker...
 Բարեւ
-> Քնացի տպրոց ՝ ուղագրություն սուորելու:
-քնացի դպրոց ուղղագրություն սովորելու, 7, 0
+> Քնացի տպրոց՝ ուղագրություն սուորելու:  
+գնացի դպրոց ուշադրություն սովորելու, 7, 0
 ```
 
 API
