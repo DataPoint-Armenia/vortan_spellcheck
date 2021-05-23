@@ -50,7 +50,7 @@ Initializing spellchecker...
 
 API
 ```
-python3 api/app.py data/freq.txt
+python3 api/app.py data/uni_freq.txt data/bi_freq.txt
 curl -X POST -H "Content-Type: application/json;" -s http://127.0.0.1:5000/suggest -d '{"word": "ացուշ"}'
 ```
 

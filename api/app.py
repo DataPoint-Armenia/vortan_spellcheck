@@ -18,19 +18,25 @@ def hello_world():
 
 @app.route('/suggest', methods=['POST'])
 def suggest():
-    word = request.get_json()["word"]
+    phrase = request.get_json()["word"]
     # query params
     params = _parse_args(request)
 
     # spellcheck
-    suggestions = sp.suggest(
-        word=word,
-        max_edit_dist=params['max_edit_dist'],
-    )
+    if len(phrase.split(' ')) <= 1:
+        suggestions = sp.suggest(
+            phrase,
+            max_edit_dist=params['max_edit_dist'],
+        )
+    else:
+        suggestions = sp.suggest_compound(
+            phrase,
+            max_edit_dist=params['max_edit_dist'],
+        )
 
     # response
     response = {
-        "input": word
+        "input": phrase
     }
     response["suggestions"] = [s.term for s in suggestions]
     return jsonify(response), 201
@@ -48,9 +54,10 @@ def handle_exception(e):
 if __name__ == '__main__':
     print("Loading spellchecker...")
     sp = spellchecker(
-       corpus_path = sys.argv[1],
         max_dictionary_edit_distance = 2,
         prefix_length = 7,
+        unigram_freq_file = sys.argv[1],
+        bigram_freq_file = sys.argv[2] if len(sys.argv) == 3 else None,
     )
     print("Done.")
 
