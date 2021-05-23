@@ -49,6 +49,7 @@ def _parse_args(request):
 
 @app.errorhandler(Exception)
 def handle_exception(e):
+    print(e)
     return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
