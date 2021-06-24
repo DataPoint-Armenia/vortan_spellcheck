@@ -7,10 +7,13 @@ from spellcheck import spellchecker
 
 from flask import Flask, jsonify, request, abort
 from werkzeug.exceptions import InternalServerError
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['JSON_AS_ASCII'] = False
+
+CORS(app)
 
 @app.route('/')
 def hello_world():
@@ -19,6 +22,7 @@ def hello_world():
 @app.route('/suggest', methods=['POST'])
 def suggest():
     phrase = request.get_json()["word"]
+    print(request.get_json())
     # query params
     params = _parse_args(request)
 
@@ -38,7 +42,14 @@ def suggest():
     response = {
         "input": phrase
     }
-    response["suggestions"] = [s.term for s in suggestions]
+
+    response["suggest"] = []
+    for s in suggestions:
+        response["suggest"].append({
+            "term": s.term,
+            "distance": s.distance,
+            "score": s.count,
+        })
     return jsonify(response), 201
 
 def _parse_args(request):
