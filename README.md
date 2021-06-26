@@ -48,20 +48,6 @@ Initializing spellchecker...
 գնացի դպրոց ուշադրություն սովորելու, 7, 0
 ```
 
-API
-```
-python3 api/app.py data/uni_freq.txt data/bi_freq.txt
-curl -X POST -H "Content-Type: application/json;" -s http://127.0.0.1:5000/suggest -d '{"word": "ացուշ"}'
-```
-
-## Helpful commands
-
-Curl api, pull out first suggestion and decode to utf-8
-```
-curl -X POST -H "Content-Type: application/json;" -s http://127.0.0.1:5000/suggest -d '{"word": "ացուշ"}' | \
-    python3 -c "import sys, json; print(json.load(sys.stdin)['suggestions'][0].encode('latin1').decode('utf8'))"
-```
-
 ## Contributors
 
 - [@sourencho](https://github.com/sourencho)
@@ -69,4 +55,3 @@ curl -X POST -H "Content-Type: application/json;" -s http://127.0.0.1:5000/sugge
 ## Acknowledgements
 
 - https://github.com/mammothb/symspellpy
-
