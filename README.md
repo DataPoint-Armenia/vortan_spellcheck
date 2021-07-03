@@ -26,9 +26,19 @@ pip3 install -r requirements.txt
 
 ## Usage
 
-Dictionary creation
-```
-python3 src/create_dict.py data/words.txt > data/freq.txt
+As a module
+```python3
+from spellcheck import spellchecker
+
+sp = spellchecker(
+    max_dictionary_edit_distance = 2,
+    prefix_length = 7,
+    unigram_freq_file = "uni.txt"
+    bigram_freq_file = "bi.txt"
+)
+
+for s in sp.suggest("տպրոց"):
+    print(s)
 ```
 
 Spellcheck demo
@@ -46,6 +56,16 @@ Initializing spellchecker...
 Բարեւ
 > Քնացի տպրոց՝ ուղագրություն սուորելու:  
 գնացի դպրոց ուշադրություն սովորելու, 7, 0
+```
+
+Symspell pickle creation
+```
+python3 src/pickle_dict.py data/uni_freq.txt data/bi_freq.txt data/symspell_dict.pickle
+```
+
+Dictionary creation
+```
+python3 src/create_dict.py data/words.txt > data/freq.txt
 ```
 
 ## Contributors

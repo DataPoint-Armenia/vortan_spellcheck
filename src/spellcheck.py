@@ -15,26 +15,32 @@ class spellchecker:
         prefix_length,
         unigram_freq_file, 
         bigram_freq_file = None,
+        pickle_file = None,
     ):
         self.sym_spell = SymSpell(
             max_dictionary_edit_distance=max_dictionary_edit_distance,
             prefix_length=prefix_length,
         )
 
-        self.sym_spell.load_dictionary(
-            unigram_freq_file,
-            term_index=0,
-            count_index=1,
-            encoding="utf-8",
-        )
-        
-        if bigram_freq_file:
-            self.sym_spell.load_bigram_dictionary(
-                bigram_freq_file,
+        if pickle_file is not None:
+            self.sym_spell.load_pickle(
+                pickle_file,
+            )
+        else:
+            self.sym_spell.load_dictionary(
+                unigram_freq_file,
                 term_index=0,
-                count_index=2,
+                count_index=1,
                 encoding="utf-8",
             )
+        
+            if bigram_freq_file:
+                self.sym_spell.load_bigram_dictionary(
+                    bigram_freq_file,
+                    term_index=0,
+                    count_index=2,
+                    encoding="utf-8",
+                )
 
     def suggest(
         self,

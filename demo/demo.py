@@ -14,8 +14,9 @@ print("Initializing spellchecker...")
 sp = spellchecker(
     max_dictionary_edit_distance = 2,
     prefix_length = 7,
-    unigram_freq_file = sys.argv[1],
+    unigram_freq_file = sys.argv[1] if len(sys.argv) <= 3 else None,
     bigram_freq_file = sys.argv[2] if len(sys.argv) == 3 else None,
+    pickle_file = sys.argv[3] if len(sys.argv) == 4 else None,
 )
 
 print("Բարեւ")
