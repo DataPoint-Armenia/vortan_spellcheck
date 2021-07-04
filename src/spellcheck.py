@@ -5,8 +5,25 @@ import pkg_resources
 from symspellpy import SymSpell, Verbosity
 from itertools import islice
 import sys
+from typing import List
+
+#extern
+sys.path.insert(0, 'extern/vortan_tokenizer/')
+from tokenizer import VortanTokenizer
 
 DEFAULT_MAX_EDIT_DISTANCE = 2
+
+
+def tokenize_sentence(text: str) -> List[str]:
+    T = VortanTokenizer(text)
+    T.add_segment(text).tokenization()
+    for s in T.segments:
+        sentence = []
+        for index, t in enumerate(s['tokens']):
+            w = t[1] if index != 0 else t[1].lower()
+            sentence.append(w)
+        return sentence # just first sentence
+
 
 class spellchecker:
     def __init__(
@@ -79,3 +96,27 @@ class spellchecker:
         )
         return suggestions
 
+    # Tokenize into individual phrases and return a list of suggestions for each 
+    def suggest_tokenize(
+        self,
+        phrases,
+        max_edit_dist = None,
+        include_unknown=True,
+        verbosity = Verbosity.CLOSEST,
+    ):
+        if max_edit_dist == None:
+            max_edit_dist = DEFAULT_MAX_EDIT_DISTANCE
+
+        words = tokenize_sentence(phrases)
+
+        sentence_suggestions = []
+        for word in words:
+            suggestions = self.sym_spell.lookup(
+                word,
+                verbosity,
+                max_edit_distance=max_edit_dist,
+                include_unknown=include_unknown,
+            )
+            sentence_suggestions.append(suggestions)
+
+        return sentence_suggestions

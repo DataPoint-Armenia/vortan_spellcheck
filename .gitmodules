@@ -1,0 +1,3 @@
+[submodule "extern/vortan_tokenizer"]
+	path = extern/vortan_tokenizer
+	url = https://github.com/DataPoint-Armenia/vortan_tokenizer

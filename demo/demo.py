@@ -26,11 +26,14 @@ while True:
         phrase = input('> ')
         if len(phrase.split(' ')) <= 1:
             suggestions = sp.suggest(phrase)
+            for s in suggestions:
+                print(s)
         else:
-            suggestions = sp.suggest_compound(phrase)
+            sentence_suggestions = sp.suggest_tokenize(phrase)
+            for suggestions in sentence_suggestions:
+                for s in suggestions:
+                    print(s)
     
-        for s in suggestions:
-            print(s)
     except KeyboardInterrupt:
         try:
             sys.exit(0)
