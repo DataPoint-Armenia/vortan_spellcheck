@@ -5,6 +5,7 @@ import pkg_resources
 from symspellpy import SymSpell, Verbosity
 from itertools import islice
 import sys
+import sqlite3
 from typing import List
 
 #extern
@@ -96,6 +97,9 @@ class spellchecker:
         )
         return suggestions
 
+    def tokenize(self, phrases):
+        return tokenize_sentence(phrases)
+
     # Tokenize into individual phrases and return a list of suggestions for each 
     def suggest_tokenize(
         self,
@@ -107,7 +111,7 @@ class spellchecker:
         if max_edit_dist == None:
             max_edit_dist = DEFAULT_MAX_EDIT_DISTANCE
 
-        words = tokenize_sentence(phrases)
+        words = self.tokenize(phrases)
 
         sentence_suggestions = []
         for word in words:
