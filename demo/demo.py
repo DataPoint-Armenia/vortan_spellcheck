@@ -27,16 +27,20 @@ print("Բարեւ")
 while True:
     try:
         phrase = input('> ')
-        if len(phrase.split(' ')) <= 1:
+        l = len(phrase.split(' '))
+        if l <= 1:
             result = sp.suggest(phrase)
             result['suggestions'] = [str(x) for x in result['suggestions']]
-            for s in result['suggestions']:
-                pp.pprint(s)
+            pp.pprint(result)
+        elif l == 2:
+            result = sp.suggest(phrase)
+            result['suggestions'] = [str(x) for x in result['suggestions']]
+            pp.pprint(result)
         else:
             sentence_results = sp.suggest_tokenize(phrase)
             for result in sentence_results:
                 result['suggestions'] = [str(x) for x in result['suggestions']]
-                pp.pprint(result)
+            pp.pprint(sentence_results)
     
     except KeyboardInterrupt:
         try:

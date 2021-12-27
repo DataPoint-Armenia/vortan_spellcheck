@@ -98,7 +98,10 @@ class spellchecker:
             # ignore_non_words=False,
             # split_phrase_by_space=True,
         )
-        return suggestions
+        return {
+            'original_term': phrase,
+            'suggestions': suggestions,
+        }
 
     def tokenize(self, phrases):
         return tokenize_sentence(phrases)
