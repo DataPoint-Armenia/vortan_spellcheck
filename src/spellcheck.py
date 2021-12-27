@@ -78,7 +78,10 @@ class spellchecker:
             max_edit_distance=max_edit_dist,
             include_unknown=include_unknown,
         )
-        return suggestions
+        return [{
+                'original_term': word,
+                'suggestions': suggestions,
+        }]
 
     def suggest_compound(
         self,
@@ -121,6 +124,9 @@ class spellchecker:
                 max_edit_distance=max_edit_dist,
                 include_unknown=include_unknown,
             )
-            sentence_suggestions.append(suggestions)
+            sentence_suggestions.append({
+                'original_term': word,
+                'suggestions': suggestions,
+            })
 
         return sentence_suggestions

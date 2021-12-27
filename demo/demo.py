@@ -3,6 +3,7 @@
 
 import sys
 import os
+import pprint
 
 sys.path.insert(0, './src/')
 
@@ -10,6 +11,8 @@ from spellcheck import spellchecker
 
 
 print("Initializing spellchecker...")
+
+pp = pprint.PrettyPrinter(indent=2)
 
 sp = spellchecker(
     max_dictionary_edit_distance = 2,
@@ -27,12 +30,14 @@ while True:
         if len(phrase.split(' ')) <= 1:
             suggestions = sp.suggest(phrase)
             for s in suggestions:
-                print(s)
+                s['suggestions'] = [str(x) for x in s['suggestions']]
+            for s in suggestions:
+                pp.pprint(s)
         else:
             sentence_suggestions = sp.suggest_tokenize(phrase)
             for suggestions in sentence_suggestions:
-                for s in suggestions:
-                    print(s)
+                suggestions['suggestions'] = [str(x) for x in suggestions['suggestions']]
+                pp.pprint(suggestions)
     
     except KeyboardInterrupt:
         try:
