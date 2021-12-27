@@ -28,16 +28,15 @@ while True:
     try:
         phrase = input('> ')
         if len(phrase.split(' ')) <= 1:
-            suggestions = sp.suggest(phrase)
-            for s in suggestions:
-                s['suggestions'] = [str(x) for x in s['suggestions']]
-            for s in suggestions:
+            result = sp.suggest(phrase)
+            result['suggestions'] = [str(x) for x in result['suggestions']]
+            for s in result['suggestions']:
                 pp.pprint(s)
         else:
-            sentence_suggestions = sp.suggest_tokenize(phrase)
-            for suggestions in sentence_suggestions:
-                suggestions['suggestions'] = [str(x) for x in suggestions['suggestions']]
-                pp.pprint(suggestions)
+            sentence_results = sp.suggest_tokenize(phrase)
+            for result in sentence_results:
+                result['suggestions'] = [str(x) for x in result['suggestions']]
+                pp.pprint(result)
     
     except KeyboardInterrupt:
         try:
